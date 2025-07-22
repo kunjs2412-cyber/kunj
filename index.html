@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>I am Kunj</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #fdbb2d, #0f2027);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+      user-select: none;
+      pointer-events: none;
+      z-index: 10;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .sprinkle {
+      position: fixed;
+      top: -10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      animation: fall var(--dur) ease-in forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(var(--fallHeight));
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(calc(var(--fallHeight) + 20px)) scale(0.6);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>I am Kunj</h1>
+
+  <script>
+    const colors = ["#ff6ec4", "#7873f5", "#ffd166", "#06d6a0", "#ef476f", "#ffffff", "#f9c80e"];
+    const maxWidth = window.innerWidth;
+    const maxHeight = window.innerHeight;
+
+    function createSprinkle(x, delay = 0) {
+      const el = document.createElement('div');
+      el.className = 'sprinkle';
+      const size = Math.random() * 6 + 3;
+      const left = x ?? Math.random() * maxWidth;
+      const dur = Math.random() * 1500 + 2500;
+      const fallHeight = Math.random() * (maxHeight - 100) + 300;
+
+      el.style.left = `${left}px`;
+      el.style.width = `${size}px`;
+      el.style.height = `${size}px`;
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.setProperty('--dur', `${dur}ms`);
+      el.style.setProperty('--fallHeight', `${fallHeight}px`);
+      el.style.animationDelay = `${delay}ms`;
+
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), dur + delay + 100);
+    }
+
+    // Auto sprinkle fall
+    setInterval(() => {
+      for (let i = 0; i < 15; i++) {
+        createSprinkle();
+      }
+    }, 800);
+
+    // On click sprinkle burst
+    document.body.addEventListener("click", e => {
+      for (let i = 0; i < 40; i++) {
+        createSprinkle(e.clientX, i * 10);
+      }
+    });
+  </script>
+</body>
+</html>
