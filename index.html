@@ -1,119 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>I am Kunj</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Pacifico', cursive;
-      background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #fdbb2d, #0f2027);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrehit Srivastava - Mount Ford Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            cursor: pointer;
+        }
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      background: linear-gradient(to right, #ff6ec4, #7873f5);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-      user-select: none;
-      pointer-events: none;
-      z-index: 10;
-      animation: fadeIn 2s ease-out forwards;
-    }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+        .floating-bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    .sprinkle {
-      position: fixed;
-      top: -10px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0;
-      animation: fall var(--dur) ease-in forwards;
-      z-index: 1;
-    }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
-        transform: translateY(var(--fallHeight));
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(calc(var(--fallHeight) + 20px)) scale(0.6);
-      }
-    }
-  </style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-15px); }
+            75% { transform: translateY(15px) translateX(5px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .info {
+            font-size: 1.8rem;
+            margin: 1.5rem 0;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .school {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: #ffeb3b;
+            animation: pulse 2s infinite;
+        }
+
+        .class-info {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            animation: fadeInUp 1.5s ease-out 0.7s both;
+        }
+
+        .decoration {
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            margin: 1.5rem auto;
+            border-radius: 10px;
+            animation: stretch 2s infinite alternate;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2rem;
+            margin-top: 2rem;
+            opacity: 0.8;
+            animation: fadeIn 3s ease-out 2s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes stretch {
+            0% { width: 100px; }
+            100% { width: 150px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.8; }
+        }
+
+        .clickable {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .clickable:hover {
+            transform: scale(1.02);
+        }
+
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Continuous falling sprinkles */
+        .continuous-sprinkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .continuous-sprinkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: continuousFall linear infinite;
+        }
+
+        @keyframes continuousFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .info { font-size: 1.4rem; }
+            .school { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
-  <h1>I am Kunj</h1>
+    <div class="floating-bubbles"></div>
+    <div class="continuous-sprinkles"></div>
+    
+    <div class="container">
+        <h1 class="clickable">Shrehit Srivastava</h1>
+        <div class="decoration"></div>
+        <div class="info clickable">Student</div>
+        <div class="class-info clickable">Class: 3 B</div>
+        <div class="school clickable">Mount Ford Academy</div>
+        <div class="decoration"></div>
+        <div class="signature clickable">✨ Future Leader ✨</div>
+    </div>
 
-  <script>
-    const colors = ["#ff6ec4", "#7873f5", "#ffd166", "#06d6a0", "#ef476f", "#ffffff", "#f9c80e"];
-    const maxWidth = window.innerWidth;
-    const maxHeight = window.innerHeight;
+    <div class="instructions">Sprinkles are falling continuously! Click on text for extra sprinkles!</div>
 
-    function createSprinkle(x, delay = 0) {
-      const el = document.createElement('div');
-      el.className = 'sprinkle';
-      const size = Math.random() * 6 + 3;
-      const left = x ?? Math.random() * maxWidth;
-      const dur = Math.random() * 1500 + 2500;
-      const fallHeight = Math.random() * (maxHeight - 100) + 300;
+    <script>
+        // Create floating bubbles
+        const bubblesContainer = document.querySelector('.floating-bubbles');
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.width = `${Math.random() * 50 + 10}px`;
+            bubble.style.height = bubble.style.width;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.top = `${Math.random() * 100}%`;
+            bubble.style.animationDelay = `${Math.random() * 5}s`;
+            bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            bubblesContainer.appendChild(bubble);
+        }
 
-      el.style.left = `${left}px`;
-      el.style.width = `${size}px`;
-      el.style.height = `${size}px`;
-      el.style.background = colors[Math.floor(Math.random() * colors.length)];
-      el.style.setProperty('--dur', `${dur}ms`);
-      el.style.setProperty('--fallHeight', `${fallHeight}px`);
-      el.style.animationDelay = `${delay}ms`;
+        // Create continuous falling sprinkles
+        const sprinklesContainer = document.querySelector('.continuous-sprinkles');
+        const colors = [
+            '#FF5252', '#FF4081', '#E040FB', '#7C4DFF', 
+            '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', 
+            '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', 
+            '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'
+        ];
 
-      document.body.appendChild(el);
+        function createContinuousSprinkles() {
+            // Create a new sprinkle every 100ms
+            setInterval(() => {
+                const sprinkle = document.createElement('div');
+                sprinkle.classList.add('continuous-sprinkle');
+                
+                const size = Math.random() * 8 + 4;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100; // Random horizontal position
+                const duration = Math.random() * 5 + 3; // Random fall duration
+                
+                sprinkle.style.width = `${size}px`;
+                sprinkle.style.height = `${size}px`;
+                sprinkle.style.backgroundColor = color;
+                sprinkle.style.left = `${left}%`;
+                sprinkle.style.animationDuration = `${duration}s`;
+                
+                sprinklesContainer.appendChild(sprinkle);
+                
+                // Remove sprinkle after animation completes
+                setTimeout(() => {
+                    sprinkle.remove();
+                }, duration * 1000);
+            }, 100);
+        }
 
-      setTimeout(() => el.remove(), dur + delay + 100);
-    }
+        // Add sprinkle effect on click
+        document.addEventListener('click', function(event) {
+            // Only create sprinkles when clicking on text elements
+            if (event.target.classList.contains('clickable')) {
+                createExtraSprinkles(event.clientX, event.clientY);
+            }
+        });
 
-    // Auto sprinkle fall
-    setInterval(() => {
-      for (let i = 0; i < 15; i++) {
-        createSprinkle();
-      }
-    }, 800);
+        function createExtraSprinkles(x, y) {
+            const sprinkleCount = 30;
+            
+            for (let i = 0; i < sprinkleCount; i++) {
+                const sprinkle = document.createElement('div');
+                sprinkle.classList.add('continuous-sprinkle');
+                
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const angle = Math.random() * 360;
+                
+                // Apply styles with burst effect
+                sprinkle.style.width = `${size}px`;
+                sprinkle.style.height = `${size}px`;
+                sprinkle.style.backgroundColor = color;
+                sprinkle.style.left = `${x + (Math.random() * 60 - 30)}px`;
+                sprinkle.style.top = `${y}px`;
+                sprinkle.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                sprinkle.style.animationDelay = `${Math.random() * 0.2}s`;
+                
+                sprinklesContainer.appendChild(sprinkle);
+                
+                // Remove sprinkle after animation completes
+                setTimeout(() => {
+                    sprinkle.remove();
+                }, 3000);
+            }
+        }
 
-    // On click sprinkle burst
-    document.body.addEventListener("click", e => {
-      for (let i = 0; i < 40; i++) {
-        createSprinkle(e.clientX, i * 10);
-      }
-    });
-  </script>
+        // Initialize continuous sprinkles
+        createContinuousSprinkles();
+    </script>
 </body>
 </html>
